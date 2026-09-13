@@ -28,11 +28,6 @@ export class MailService {
     this.frontendUrl =
       this.configService.get<string>('FRONTEND_URL') || 'http://localhost:4200';
 
-    if (!this.brevoApiKey || !this.senderEmail) {
-      throw new InternalServerErrorException(
-        'Brevo mail configuration is missing. Please check BREVO_API_KEY and BREVO_SENDER_EMAIL.',
-      );
-    }
   }
 
   async sendPasswordResetEmail(
@@ -92,6 +87,12 @@ export class MailService {
     subject: string;
     htmlContent: string;
   }): Promise<void> {
+    if (!this.brevoApiKey || !this.senderEmail) {
+      throw new InternalServerErrorException(
+        'Brevo mail configuration is missing. Please check BREVO_API_KEY and BREVO_SENDER_EMAIL.',
+      );
+    }
+
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
