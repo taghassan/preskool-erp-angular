@@ -44,6 +44,8 @@ Thumbs.db
 .claude/settings.local.json
 
 .angular
+.runtime
+/dist/local-build
 
 /generated/prisma
 .env
