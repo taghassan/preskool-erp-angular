@@ -2,7 +2,9 @@
   "name": "@preskool-erp/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "seed:mock": "node --env-file=.env scripts/seed-mock-data.cjs"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "~21.2.0",
